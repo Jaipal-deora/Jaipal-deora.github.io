@@ -1,0 +1,398 @@
+{
+  "site": {
+    "title": "Jaipal Deora",
+    "description": "Portfolio of Jaipal Deora, a senior data scientist and AI engineer working on production machine learning, computer vision, generative models, and LLM systems.",
+    "url": "",
+    "defaultTheme": "ocean",
+    "themes": [
+      "light",
+      "dark",
+      "ocean",
+      "forest"
+    ],
+    "sampleContent": false
+  },
+  "profile": {
+    "name": "Jaipal Deora",
+    "initials": "JD",
+    "role": "Senior Data Scientist / AI Engineer",
+    "location": "Karachi, Pakistan",
+    "availability": "Open to MS/PhD programs & AI roles",
+    "eyebrow": "MACHINE LEARNING / COMPUTER VISION / LLMS",
+    "headline": "Seeing how models learn.\nBuilding what ships.",
+    "intro": "I build machine learning that runs in production, from churn models and monitoring at Afiniti to independent projects in computer vision, generative models, and retrieval.",
+    "workNote": {
+      "title": "A NOTE ON MY WORK",
+      "lines": [
+        "Understand the model.",
+        "Test it honestly.",
+        "Ship it reliably."
+      ]
+    },
+    "footer": "Built with curiosity. Kept simple.",
+    "email": "jaipaldeora1293@gmail.com",
+    "resume": "./assets/Jaipal_Resume.pdf",
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Jaipal-deora"
+      },
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/jaipal-kumar-27b45412b/"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "projects",
+      "type": "projects",
+      "title": "Selected work",
+      "eyebrow": "01 / PROJECTS",
+      "description": "Production-minded machine learning, from interpretability and computer vision to generative models and retrieval.",
+      "items": [
+        {
+          "id": "documind",
+          "title": "DocuMind: A Local RAG System",
+          "category": "NLP & LLMs",
+          "summary": "A lightweight retrieval-augmented generation system that answers questions about your own PDFs, built entirely on open-source tools and running locally.",
+          "year": "2026",
+          "tags": [
+            "LlamaIndex",
+            "Qdrant",
+            "Ollama",
+            "FastAPI",
+            "Streamlit"
+          ],
+          "metric": {
+            "value": "RAG",
+            "label": "Fully local stack"
+          },
+          "visual": "scatter",
+          "featured": true,
+          "links": [
+            {
+              "label": "View on GitHub",
+              "url": "https://github.com/Jaipal-deora/DocuMind"
+            }
+          ],
+          "caseStudy": {
+            "problem": "How can an LLM answer questions about private documents without sending them to an external service, and without drifting away from what the documents say?",
+            "approach": "Load and chunk PDFs, embed the chunks with BAAI/bge-small-en-v1.5, store them in Qdrant, retrieve the top matches for each query, and pass them with the question to a local Llama 3.2 3B model served by Ollama. Answers can be restricted to a selected document, with a FastAPI backend and a Streamlit interface.",
+            "result": "A working end-to-end pipeline from ingestion to grounded answers, with per-document filtering when several files are loaded.",
+            "limitations": "Tested only on PDFs. Answer quality depends on chunking and embedding quality, and a local setup depends on your hardware. Next steps are better chunking, hybrid search, caching, and proper evaluation metrics for answer quality."
+          }
+        },
+        {
+          "id": "latent-explorer",
+          "title": "Latent Space Explorer",
+          "category": "Generative AI",
+          "summary": "An interactive playground for a variational autoencoder trained on faces, where you can edit attributes, interpolate between faces, and do arithmetic directly in latent space.",
+          "year": "2026",
+          "tags": [
+            "VAE",
+            "PyTorch",
+            "Gradio",
+            "CelebA"
+          ],
+          "metric": {
+            "value": "VAE",
+            "label": "Trained on CelebA"
+          },
+          "visual": "scatter",
+          "featured": true,
+          "links": [
+            {
+              "label": "View on GitHub",
+              "url": "https://github.com/Jaipal-deora/latent-explorer"
+            }
+          ],
+          "caseStudy": {
+            "problem": "What does a generative model actually learn about faces, and can that structure be explored and controlled by hand?",
+            "approach": "Train a VAE on CelebA, then build a Gradio app on top of the encoder and decoder. It supports attribute editing (smile, gender, age, eyeglasses), random face sampling, reconstruction, a 5×5 latent grid over two chosen dimensions, interpolation between faces, and latent arithmetic.",
+            "result": "A single app covering seven ways of probing the same latent space, with saved training checkpoints and results in the repository.",
+            "limitations": "Attribute editing covers four attributes, and VAE outputs are typically softer than those of GANs or diffusion models."
+          }
+        },
+        {
+          "id": "flood-segmentation",
+          "title": "Flood Area Segmentation",
+          "category": "Computer Vision",
+          "summary": "A segmentation model that marks flooded areas in images, with a Streamlit app for trying it out.",
+          "year": "2025",
+          "tags": [
+            "Segmentation",
+            "Python",
+            "Streamlit"
+          ],
+          "metric": {
+            "value": "Segmentation",
+            "label": "Streamlit demo"
+          },
+          "visual": "bars",
+          "links": [
+            {
+              "label": "View on GitHub",
+              "url": "https://github.com/Jaipal-deora/Flood-Segmentation"
+            }
+          ],
+          "caseStudy": {
+            "problem": "Can flooded regions be located automatically in images, so that affected areas can be assessed faster?",
+            "approach": "Train a segmentation model on flood imagery and wrap it in a Streamlit app that takes an image and returns the predicted flood mask.",
+            "result": "The repository includes the training code, trained weights, saved results, and the demo app.",
+            "limitations": "Performance depends on how closely new images match the training data, such as sensor type, terrain, and water appearance."
+          }
+        },
+        {
+          "id": "diffuse-pixel-art",
+          "title": "Diffuse Pixel Art",
+          "category": "Generative AI",
+          "summary": "A diffusion model trained to generate pixel art, packaged as a Dockerized Streamlit app.",
+          "year": "2025",
+          "tags": [
+            "Diffusion models",
+            "PyTorch",
+            "Streamlit",
+            "Docker"
+          ],
+          "metric": {
+            "value": "Diffusion",
+            "label": "Dockerized app"
+          },
+          "visual": "forecast",
+          "links": [
+            {
+              "label": "View on GitHub",
+              "url": "https://github.com/Jaipal-deora/Diffuse-Pixel-Art"
+            }
+          ],
+          "caseStudy": {
+            "problem": "Can a diffusion model learn the look of pixel art well enough to generate new images from noise?",
+            "approach": "Train a diffusion model on pixel-art images and serve it through a Streamlit app, with a Dockerfile for reproducible setup.",
+            "result": "The repository includes the training script, trained weights, sample outputs, and the app, released under the MIT license.",
+            "limitations": "Diffusion sampling is slower than a single forward pass, and output quality depends on the size and variety of the training set."
+          }
+        },
+        {
+          "id": "layer-visualizer",
+          "title": "Neural Network Layer Visualizer",
+          "category": "Computer Vision",
+          "summary": "An interpretability notebook that visualizes intermediate feature maps across CNN layers (convolutional, flatten, and dense) to show how a network builds up from raw pixels to high-level representations.",
+          "year": "2025",
+          "tags": [
+            "PyTorch",
+            "CNN",
+            "Interpretability",
+            "Jupyter"
+          ],
+          "metric": {
+            "value": "Conv · Dense",
+            "label": "Layers visualized"
+          },
+          "visual": "bars",
+          "links": [
+            {
+              "label": "View on GitHub",
+              "url": "https://github.com/Jaipal-deora/VisualizeNeuralNetLayers"
+            }
+          ],
+          "caseStudy": {
+            "problem": "What does a convolutional network actually learn at each layer, and how does that change from the input image to the final prediction?",
+            "approach": "Pass an image through a trained CNN, capture activations at each convolutional, flatten, and dense layer, and plot them side by side.",
+            "result": "Saved visualizations for each convolutional layer, the flatten layer, and the dense layers, alongside the notebook that produces them.",
+            "limitations": "Feature maps are a qualitative view. They build intuition but are not a rigorous explanation of model decisions."
+          }
+        },
+        {
+          "id": "facial-keypoints",
+          "title": "Live Facial Keypoints Detection",
+          "category": "Computer Vision",
+          "summary": "Facial landmark detection with a custom CNN, trained on labeled keypoint data and run on live webcam input.",
+          "year": "",
+          "enabled":false,
+          "tags": [
+            "Keras",
+            "OpenCV",
+            "CNN",
+            "Live inference"
+          ],
+          "metric": {
+            "value": "CNN",
+            "label": "Real-time inference"
+          },
+          "visual": "scatter",
+          "links": [
+            {
+              "label": "View on GitHub",
+              "url": "https://github.com/Jaipal-deora/FacialKeypointsDetection"
+            }
+          ],
+          "caseStudy": {
+            "problem": "Can a compact CNN locate facial landmarks quickly enough to run on a live webcam feed?",
+            "approach": "Train a custom CNN on labeled facial keypoints, then use OpenCV to capture frames and overlay the predicted landmarks in real time.",
+            "result": "A working webcam demo that predicts and draws facial landmarks frame by frame.",
+            "limitations": "Accuracy depends on lighting, head pose, and how closely live conditions match the training data."
+          }
+        }
+      ]
+    },
+    {
+      "id": "about",
+      "type": "about",
+      "title": "Curious about how models learn.",
+      "eyebrow": "02 / ABOUT",
+      "paragraphs": [
+        "I’m a senior data scientist and AI engineer based in Karachi, Pakistan, with a Bachelor’s in Computer Science from FAST NUCES (2020). Since 2020 I’ve worked at Afiniti, moving from data engineering into data science and building the pipelines, models, and monitoring that production systems rely on.",
+        "Outside work, I explore how models learn and generate: interpreting CNN feature maps, building generative models, and grounding LLM answers in real documents. I’m now looking to deepen that foundation through a master’s programme in AI."
+      ],
+      "facts": [
+        {
+          "label": "Focus",
+          "value": "Production ML, computer vision & LLM systems"
+        },
+        {
+          "label": "Experience",
+          "value": "6 years at Afiniti"
+        },
+        {
+          "label": "Currently exploring",
+          "value": "Generative models, RAG & evaluation"
+        },
+        {
+          "label": "Open to",
+          "value": "MS/PhD programs & AI roles"
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "type": "skills",
+      "title": "A toolkit, not a checklist.",
+      "eyebrow": "03 / EXPERTISE",
+      "groups": [
+        {
+          "title": "Data Science & Statistics",
+          "items": [
+            "Python",
+            "R",
+            "SQL",
+            "LightGBM",
+            "Stan",
+            "Hypothesis testing & experimentation",
+            "Churn modeling"
+          ]
+        },
+        {
+          "title": "Model Operations",
+          "items": [
+            "Production monitoring",
+            "Model drift detection",
+            "Automated alerts & diagnostics",
+            "Parallel model validation",
+            "Docker",
+            "FastAPI"
+          ]
+        },
+        {
+          "title": "Data Engineering",
+          "items": [
+            "ETL pipelines (Talend, SQL)",
+            "Feature engineering pipelines",
+            "Data quality validation",
+            "Large-scale datasets"
+          ]
+        },
+        {
+          "title": "Computer Vision & Generative AI",
+          "items": [
+            "PyTorch",
+            "CNNs",
+            "Segmentation",
+            "VAEs",
+            "Diffusion models",
+            "OpenCV",
+            "Interpretability"
+          ]
+        },
+        {
+          "title": "NLP & LLMs",
+          "items": [
+            "RAG",
+            "LlamaIndex",
+            "Qdrant",
+            "Ollama",
+            "Embeddings",
+            "Prompt engineering"
+          ]
+        },
+        {
+          "title": "Tools & Delivery",
+          "items": [
+            "NumPy",
+            "pandas",
+            "scikit-learn",
+            "Streamlit",
+            "Gradio",
+            "Jupyter",
+            "Git",
+            "Stakeholder communication",
+            "Mentoring"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "experience",
+      "type": "timeline",
+      "title": "Building in production.",
+      "eyebrow": "04 / EXPERIENCE",
+      "items": [
+        {
+          "title": "Senior Data Scientist",
+          "organization": "Afiniti, Karachi, Pakistan",
+          "period": "Jan 2025 — Present",
+          "description": "Develop and deploy machine learning solutions, including customer churn prediction with Python, LightGBM and Stan, and intelligent pairing of customers with call-center agents to improve customer outcomes and support revenue. Design experiments and statistical analyses that inform customer-facing strategy. Build production monitoring, automated alerts, and diagnostic reports to catch data and model issues early. Present findings to managers and stakeholders and mentor team members."
+        },
+        {
+          "title": "Data Scientist II",
+          "organization": "Afiniti, Karachi, Pakistan",
+          "period": "Jan 2023 — Jan 2025",
+          "description": "Implemented parallel processing for model validation, cutting runtime from roughly a day to 3–5 hours. Automated production model health checks covering feature profiling, data quality, model drift, and model application validation."
+        },
+        {
+          "title": "Data Engineer II",
+          "organization": "Afiniti, Karachi, Pakistan",
+          "period": "Feb 2022 — Jan 2023",
+          "description": "Led the design and maintenance of high-throughput ETL pipelines in Talend and SQL, processing CRM datasets of 1M+ records and supporting data quality validation and data availability for Data Science teams. Automated performance and invoicing processes, reducing manual effort, reconciliation time, and the risk of errors."
+        },
+        {
+          "title": "Data Engineer",
+          "organization": "Afiniti, Karachi, Pakistan",
+          "period": "Oct 2020 — Feb 2022",
+          "description": "Contributed to and refactored CRUX, an internal feature-engineering pipeline that standardized features across ML models and cut data-preparation time for Data Science teams by 50%. Supported multiple data teams in adopting the pipeline and resolving implementation issues."
+        }
+      ]
+    },
+    {
+      "id": "education",
+      "type": "timeline",
+      "title": "Foundations.",
+      "eyebrow": "05 / EDUCATION",
+      "items": [
+        {
+          "title": "Bachelor of Science, Computer Science",
+          "organization": "FAST – National University of Computer and Emerging Sciences (NUCES), Karachi",
+          "period": "2016 — 2020",
+          "description": "Coursework in algorithms, machine learning, and software engineering."
+        }
+      ]
+    },
+    {
+      "id": "contact",
+      "type": "contact",
+      "title": "Let’s work on a good question.",
+      "eyebrow": "06 / CONTACT",
+      "description": "I’m looking for MS/PhD opportunities in AI/ML and industry roles in computer vision, LLM engineering, and ML systems. If you’re working on something interesting, let’s talk."
+    }
+  ]
+}
