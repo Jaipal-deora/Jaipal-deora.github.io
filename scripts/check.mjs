@@ -11,5 +11,5 @@ const html=await build();
 const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(ids).size,ids.length,'IDs must be unique');
 for(const m of html.matchAll(/href="#([^"]+)"/g))assert(ids.includes(m[1]),`Missing anchor ${m[1]}`);
 for(const file of ['styles.css','app.js','favicon.svg'])await readFile(path.join(root,'dist',file));
-assert(!html.includes('href="javascript:'));assert(html.includes('Template preview'));
+assert(!html.includes('href="javascript:'));assert.equal(html.includes('Template preview'),d.site.sampleContent===true);
 console.log('Content, section extension, safe links, generated anchors, and assets verified.');
