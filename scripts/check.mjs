@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import path from 'node:path';
+import {build,root,validate,safeLink,esc} from './build.mjs';
+const d=JSON.parse(await readFile(path.join(root,'content/portfolio.json'),'utf8'));
+validate(d);
+assert.equal(safeLink('javascript:alert(1)'),'');assert.equal(safeLink('//example.com'),'');assert.equal(safeLink('./assets/resume.pdf'),'./assets/resume.pdf');assert.equal(esc('<script>'),'&lt;script&gt;');
+const duplicate=structuredClone(d);duplicate.sections.push(duplicate.sections[0]);assert.throws(()=>validate(duplicate));
+const extended=structuredClone(d);extended.sections.push({id:'publications',type:'content',title:'Publications',paragraphs:['A paper.']});validate(extended);
+const html=await build();
+const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(ids).size,ids.length,'IDs must be unique');
+for(const m of html.matchAll(/href="#([^"]+)"/g))assert(ids.includes(m[1]),`Missing anchor ${m[1]}`);
+for(const file of ['styles.css','app.js','favicon.svg'])await readFile(path.join(root,'dist',file));
+assert(!html.includes('href="javascript:'));assert(html.includes('Template preview'));
+console.log('Content, section extension, safe links, generated anchors, and assets verified.');
